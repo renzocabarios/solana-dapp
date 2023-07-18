@@ -3,8 +3,8 @@ import "./App.css";
 import { PhantomProvider } from "./interfaces";
 import { Buffer } from "buffer";
 import { Connection, PublicKey, clusterApiUrl } from "@solana/web3.js";
-import { Program, AnchorProvider, web3, utils } from "@project-serum/anchor";
-const { SystemProgram, Keypair } = web3;
+import { Program, AnchorProvider, web3 } from "@project-serum/anchor";
+const { SystemProgram } = web3;
 import idl from "./idl.json";
 import * as anchor from "@project-serum/anchor";
 window.Buffer = Buffer;
@@ -86,7 +86,7 @@ function App() {
     }
   };
 
-  const fetchText = async () => {
+  const updateText = async () => {
     const network = clusterApiUrl("devnet");
     // @ts-ignore
     const connection = new Connection(network, "processed");
@@ -101,7 +101,7 @@ function App() {
     const program = new Program(idl, programID, provider);
 
     try {
-      const tx = await program.rpc.update("test", {
+      await program.rpc.update(textField, {
         accounts: {
           saver: temp.publicKey,
         },
@@ -181,9 +181,9 @@ function App() {
                   borderRadius: "5px",
                   margin: "15px auto",
                 }}
-                onClick={fetchText}
+                onClick={updateText}
               >
-                Fetch
+                Update
               </button>
             </div>
           )}
