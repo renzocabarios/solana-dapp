@@ -1,0 +1,65 @@
+{
+  "version": "0.1.0",
+  "name": "string_saver",
+  "instructions": [
+    {
+      "name": "initialize",
+      "accounts": [
+        {
+          "name": "saver",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "user",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "text",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "update",
+      "accounts": [
+        {
+          "name": "saver",
+          "isMut": true,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "text",
+          "type": "string"
+        }
+      ]
+    }
+  ],
+  "accounts": [
+    {
+      "name": "StringSaver",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "text",
+            "type": "string"
+          }
+        ]
+      }
+    }
+  ],
+  "metadata": {
+    "address": "B5siGtoGsZmrTdBkeja6tv4YG8mHpPQmsNXp2FhYWkJT"
+  }
+}
